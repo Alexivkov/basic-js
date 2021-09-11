@@ -27,7 +27,7 @@ export default function transform(arr) {
       if (i < arr.length - 1 && arr[i] === '--discard-next') i++;
       }
       return str;
-  }
+  
   
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here

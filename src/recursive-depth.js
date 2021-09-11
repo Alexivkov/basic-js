@@ -38,5 +38,3 @@ export default class DepthCalculator {
     // remove line with error and write your code here
   }
 }
-
-// 
