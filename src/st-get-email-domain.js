@@ -11,6 +11,8 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getEmailDomain(email) {
+  let s = email.lastIndexOf('@');
+  return email.slice(s + 1);
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
