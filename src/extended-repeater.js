@@ -16,22 +16,34 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function repeater(str, options) {
-  console.log(options);
-  let strRepeatTimes = [];
-  for (let i=0; i < options['repeatTimes']; i++) {
-    strRepeatTimes.push(str);
-  }
   console.log('str=', str);
-  console.log('strRepeatTimes', strRepeatTimes);
-  if(options['separator']) {
-    console.log(strRepeatTimes.join(options['separator']));
-    return strRepeatTimes.join(options['separator']);
+  console.log(options);
+  let additionSeparatorWithAddition;
+  let strWithAddition;
+  let additionSeparatorWithAdditionTimes;
+  let arr = []; 
+  let additionSeparator;
+  if (options['additionRepeatTimes']) {
+    if (!options['additionSeparator']) additionSeparator = '|';
+    else additionSeparator = options['additionSeparator'];
+    additionSeparatorWithAddition = additionSeparator + options['addition'];
+    console.log('ASWA', additionSeparatorWithAddition);
+    additionSeparatorWithAdditionTimes = additionSeparatorWithAddition.repeat(options['additionRepeatTimes']);
+    console.log('additionSeparatorWithAdditionTimes', additionSeparatorWithAdditionTimes);
   }
-  else {
-    console.log(strRepeatTimes.join('+'));
-    return strRepeatTimes.join('+');
+  if (options['addition']) strWithAddition = str + options['addition'];
+  else strWithAddition = str;
+  console.log('strWithAddition', strWithAddition);
+  for ( let i = 0; i < options['repeatTimes']; i++) {
+    arr.push(strWithAddition);
   }
-  return str;
+  if (arr.length === 0) return strWithAddition;
+  console.log(arr);
+  let separator;
+  if (!options['separator']) separator = '+';
+  else separator = options['separator'];
+  console.log(arr.join(separator));
+  return arr.join(separator);
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
