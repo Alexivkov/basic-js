@@ -13,9 +13,8 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function getSeason(date) {
   if (date === undefined) return 'Unable to determine the time of year!';
-  if (isNaN(Date.parse(date))) throw new Error("Invalid date!");
-  if(date instanceof Date && Object.prototype.toString.call(date) !== '[object Date]' && typeof date.getMonth !== 'function' ) throw new Error("Invalid date!"); 
-  let month = date.getMonth();
+  if(date[Symbol.toStringTag] || isNaN(Date.parse(date))) throw new Error("Invalid date!");
+  const month = date.getMonth();
   if (month < 2 || month === 11) return 'winter';
   if (month < 5 && month > 1) return 'spring';
   if (month > 4 && month < 8) return 'summer';
