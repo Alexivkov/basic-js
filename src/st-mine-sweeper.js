@@ -26,6 +26,7 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function minesweeper (matrix) {
   let result =[];
   let tempResult = [];
+  let res =[];
   for (let arr = 0; arr < matrix.length; arr++) {
     for (let j = 0; j < matrix[arr].length; j++) {
       let count = 0;
@@ -43,11 +44,9 @@ export default function minesweeper (matrix) {
       if (arr < matrix.length -1 && matrix[arr+1][j]) count++;
       res.push(count);
     }
-    console.log(res);
     result.push(res);
     res=[];
   }
-  console.log(result);
   return result;
   throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
